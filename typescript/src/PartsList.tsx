@@ -1,12 +1,25 @@
 import React from "react";
 
+import { Container, Center, Box, Divider, Text, Flex, Button, Spacer } from '@chakra-ui/react'
 
-export const PartsList =()=>{
-    return(
-        <div className="list">
-            <div className="list-item">
-                <h3>Item</h3>
-            </div>
-        </div>
+interface Data {
+    type: string,
+    man: string,
+    mpn: string
+}
+
+export const PartsList = (data: Data) => {
+    return (
+        <Box h='100px' borderWidth='1px' borderRadius='lg' mt={10}>
+            <Flex>
+                <Text ml='2'>Type {data.type}</Text>
+                <Spacer />
+                <Text>MAN.{data.man}</Text>
+                <Spacer />
+                <Text mr='2'>MPN {data.mpn}</Text>
+            </Flex>
+            <Divider />
+            <Button colorScheme='teal' variant='outline' ml={2} mt={5}>Manual</Button>
+        </Box>
     )
 } 
