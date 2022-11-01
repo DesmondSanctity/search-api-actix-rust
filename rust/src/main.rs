@@ -5,7 +5,6 @@ extern crate log;
 #[macro_use]
 extern crate random_number;
 
-use actix_files::Files;
 use actix_web::middleware::Logger;
 use actix_web::{App, HttpServer};
 
@@ -24,7 +23,7 @@ async fn main() -> std::io::Result<()> {
             .wrap(Logger::default())
             .data(mocks::api::PartSearchAPI {})
             .service(routes::healthcheck)
-            .default_service(Files::new("/", "../typescript/public/").index_file("index.html"))
+            .service(routes::query)
     })
     .bind("127.0.0.1:3000")?
     .run()

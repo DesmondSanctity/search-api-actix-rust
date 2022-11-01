@@ -1,14 +1,14 @@
 import React from "react";
 
-import { Container, Center, Box, Divider, Text, Flex, Button, Spacer } from '@chakra-ui/react'
+import { Box, Divider, Text, Flex, Button, Spacer } from '@chakra-ui/react'
 
-interface Data {
-    type: string,
-    man: string,
-    mpn: string
-}
+// interface Data {
+//     type: string,
+//     man: string,
+//     mpn: string
+// }
 
-export const PartsList = (data: Data) => {
+export const PartsList = (data:any) => {
     return (
         <Box h='100px' borderWidth='1px' borderRadius='lg' mt={10}>
             <Flex>

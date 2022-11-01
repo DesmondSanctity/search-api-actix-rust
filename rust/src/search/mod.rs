@@ -1,1 +1,1 @@
-mod highlighting;
+pub(crate) mod highlighting;
