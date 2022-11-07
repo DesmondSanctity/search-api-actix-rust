@@ -7,7 +7,7 @@ import { SearchIcon } from '@chakra-ui/icons'
 
 function App() {
   const [query, setQuery] = useState('')
-  const [SearchResults, setSearchResults] = useState({})
+  const [searchResults, setSearchResults] = useState({string_fragment:'', parts_list:['']})
   // ...
   const handleSubmit = (e: any) => {
     e.preventDefault()
@@ -15,11 +15,11 @@ function App() {
     const uri = 'https://localhost/3000/query'
     axios.get(uri, { params: { q: query } })
       .then(response => {
-        setSearchResults(response)
+        setSearchResults(response.data)
       })
       .catch(err => {
         console.log(err)
-       })
+      })
   }
 
   const handleQueryChange = (e: any) => {
@@ -34,9 +34,9 @@ function App() {
           <InputLeftAddon children={<IconButton aria-label='Search database' icon={<SearchIcon />} />} />
           <Input type='text' placeholder='Input search query' onChange={handleQueryChange} />
         </InputGroup>
-        <Button colorScheme='teal' variant='outline' onSubmit={handleSubmit}>Add Mock Data</Button>
+        <Button colorScheme='teal' variant='outline' onSubmit={handleSubmit}>Search</Button>
       </Flex>
-      <PartsList data={SearchResults} />
+      <PartsList data={searchResults.parts_list} highlight={searchResults.string_fragment} />
     </Container>
   );
 }
